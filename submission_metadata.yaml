@@ -1,0 +1,97 @@
+# Redrob Hackathon — Submission Metadata 
+
+# ============================================================================
+# Team identity
+# ============================================================================
+team_name: "Veridis Quo"  
+
+primary_contact:
+  name: "Akshita Raj"
+  email: "akshita.rj2013@gmail.com"   
+  phone: "+91-8826359106"        
+
+team_members:
+  - name: "Kinjal Goel"
+    email: "kinjalgoel597@gmail.com"
+    role: "Content Writer"          
+  - name: "Varun Joshi"
+    email: "varunjoshi2014@gmail.com"
+    role: "Data Engineer"
+  
+
+# ============================================================================
+# Code and reproducibility
+# ============================================================================
+github_repo: "https://github.com/VarunJoshi07/Hackathon"
+# Required. Must be reachable. Private repos OK if you can grant organizer
+# access at Stage 3 (the email to add will be communicated then).
+
+sandbox_link: "https://huggingface.co/spaces/YOUR_USERNAME/redrob-ranker"
+# Required. A working hosted environment where the ranker can be run on a small
+# candidate sample. See Section 10.5 of submission_spec.md for acceptable
+# platforms (HuggingFace Spaces, Streamlit Cloud, Replit, Colab, Docker, Binder).
+
+reproduce_command: "pip install -r requirements --> python submission.py"
+# The single command that produces submission.csv from candidates.jsonl.
+
+
+# ============================================================================
+# Compute environment
+# ============================================================================
+compute:
+  platform: "HP Laptop"                    # Or: "AWS EC2 c5.4xlarge", "Local Linux box", etc.
+  cpu_cores: 12                                  # Number of CPU cores used
+  ram_gb: 16                                    # Available RAM in GB
+  python_version: "3.13.5"                      # python --version
+  os: "Windows 11 Version 25H2"                              # Or "Ubuntu 22.04 LTS", etc.
+  uses_gpu_for_inference: false                 # Must be false — see compute constraints
+  has_network_during_ranking: false             # Must be false — no API calls during ranking
+  pre_computation_required: true               # true if you pre-compute embeddings or train models offline
+  pre_computation_time_minutes: 0               # Approximate, if applicable
+
+# ============================================================================
+# AI tools declaration
+# ============================================================================
+# Transparency only — declared use is NOT penalized. Be honest. Stage 5 interview
+# may verify these declarations against your code; declarations that contradict
+# your code or your interview are flagged.
+ai_tools_used:
+  - "Claude"        # e.g. for  Large-scale code refactoring, README generation, Documentation improvement, Repository organization, Code quality review
+  - "GitHub Copilot" #e.g. for Function implementation assistance, Code completion, Refactoring repetitive code, Minor debugging assistance
+  - "Gemini" #e.g.for Alternative implementation suggestions, Validation of design decisions, Brainstorming ranking improvements, General Python assistance
+  - "ChatGPT" #e.g. for System architecture planning, Ranking strategy design,Feature engineering ideas, Debugging Python code, Score calibration and weighting, Submission pipeline development, README and documentation writing, Reasoning generation refinement
+  - "Codex" #e.g. for Function implementation assistance, Code completion, Refactoring repetitive code, Minor debugging assistance
+  - "Grok AI" #e.g.for Brainstorming candidate ranking heuristics, Reviewing scoring approaches, Alternative reasoning ideas 
+  # Other options: "ChatGPT", "Cursor", "Gemini", "Codeium", "Other", "None"
+
+ai_usage_summary: |
+    - "Used ChatGPT for system architecture, ranking methodology, debugging Python code, feature engineering, score calibration, reasoning generation, and README/documentation drafting."
+    - "Used Claude for large-scale code refactoring, code review, repository organization, documentation improvements, and refining the reasoning generation module."
+    - "Used Gemini for validating implementation decisions, brainstorming alternative ranking strategies, and general Python development assistance."
+    - "Used Grok to explore alternative ranking heuristics, scoring strategies, and reasoning approaches."
+    - "Used GitHub Copilot/Codex for code completion, boilerplate generation, implementing helper functions, refactoring repetitive code, and minor debugging."
+    - "All AI-generated code and suggestions were reviewed, modified, tested, and integrated manually."
+    - "No hosted LLMs or external APIs were used during the ranking step. The final submission pipeline runs entirely offline on CPU."
+    - "Candidate data was not transmitted to hosted LLM APIs during submission generation."
+
+# ============================================================================
+# Approach summary (optional but recommended)
+# ============================================================================
+methodology_summary: |
+  The solution implements a deterministic two-stage candidate ranking pipeline designed to maximize ranking quality while satisfying the competition's CPU-only, offline, and reproducibility constraints. 
+  The First Pass performs efficient semantic retrieval using embedding-based search to reduce the candidate pool from the full dataset to the top 1,000 candidates. 
+  The Second Pass reranks these candidates using a Cross-Encoder for deeper semantic matching between the job description and candidate profiles, selecting the final top 100 candidates.
+  Final scores are computed deterministically using a weighted combination of Cross-Encoder similarity, embedding similarity, career progression signals, and behavioral signals, with additional bonuses for relevant production experience and years of experience.
+  Deterministic multi-level tie-breaking ensures reproducible rankings.
+  A profile-aware reasoning module generates concise, evidence-based justifications using measurable candidate attributes and job-description alignment while avoiding hallucinations.
+  On the evaluation machine, the complete pipeline processed 1,000 candidates in the First Pass, produced the final Top 100 after reranking, and generated the submission CSV in approximately 169.33 seconds, 
+  remaining within the competition's CPU, memory, and runtime constraints.
+# ============================================================================
+# Declarations
+# ============================================================================
+declarations:
+  read_submission_spec: true        # I have read submission_spec.md in full
+  code_is_original_work: true       # My code is my team's original work (using AI as a tool is fine)
+  no_collusion: true                # I have not coordinated my submission with other teams
+  honeypot_check_done: true      # OPTIONAL — set true if you explicitly checked for honeypots in your ranking
+  reproduction_tested: true         # I have tested that my reproduce_command runs end-to-end
