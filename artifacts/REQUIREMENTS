@@ -1,9 +1,0 @@
-numpy
-pandas
-tqdm
-scikit-learn
-scipy
-joblib
-sentence-transformers
-torch
-THESE MODULES ARE NEEDED TO RUN THE FILES
