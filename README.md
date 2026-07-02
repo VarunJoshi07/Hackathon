@@ -386,8 +386,7 @@ This prioritizes highly relevant candidates while ensuring stable and reproducib
 
 ## Architecture
 
-TODO
-(Add architecture diagram)
+<img width="1536" height="1024" alt="WhatsApp Image 2026-07-02 at 22 11 03" src="https://github.com/user-attachments/assets/a8206bb8-d403-44fa-8ffb-2cbf132f808b" />
 
 ---
 
@@ -412,8 +411,7 @@ TODO
 
 ## License
 
-TODO
-(Add license)
+MIT
 
 ---
 
