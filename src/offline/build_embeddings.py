@@ -12,7 +12,7 @@ from tqdm import tqdm
 
 from build_skill_vocab import iter_candidates
 from feature_extractor import extract_features
-from offline.text_cleaner import clean_text
+from src.offline.text_cleaner import clean_text
 
 
 logger = logging.getLogger(__name__)
