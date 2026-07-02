@@ -393,10 +393,7 @@ This prioritizes highly relevant candidates while ensuring stable and reproducib
 ## Demo
 
 **Demo Dashboard**
-
-TODO
-(Add Streamlit link)
-
+https://huggingface.co/spaces/1107Varun1107/candidate-ranker
 ---
 
 ## Future Improvements
